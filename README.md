@@ -7,7 +7,7 @@ Multi-threaded Python server that handles client requests for statistical data a
 This project is a multi-threaded Python server that handles client requests for statistical data analysis.
 
 The server is implemented using the Flask framework
-The dataset is a CSV containing statistics on nutrition, physical activity, and obesity in the US from 2011-2022.
+The dataset is a CSV containing infomration on nutrition, physical activity, and obesity in the US from 2011-2022.
 
 The server is able to handle multiple clients concurently using a thread pool. Upon startup, it loads the CSV file and extracts the information needed to calculate the required statistics per request. Since data processing can take significant time, the next things happen: when an endpoint receives a request, it returns a job_id. It places the job into a job queue processed by a thread pool. A thread picks up a job from the queue, he endpoint checks if the job_id is valid, whether the result is ready, and returns the appropriate response.
 It performs the operation, and writes the result to a file named after the job_id in the results/ directory. 
